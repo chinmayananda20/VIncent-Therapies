@@ -28,14 +28,14 @@ const Navbar = () => {
       </div>
 
       {/* Logo and title */}
-      <div className="flex flex-col items-center md:flex-row md:justify-between md:px-4 md:py-4 md:h-20 mb-4 md:mb-0">
+      <div className="flex flex-col items-center md:flex-row md:justify-between px-4 py-2 md:py-4 md:h-20">
         <div className="flex flex-col items-center md:flex-row">
           <Link to="/">
             <img src={logo} className="rounded-full h-14" alt="Logo" />
           </Link>
 
           <p className="font-bold text-2xl sm:text-3xl mt-2 md:mt-0 md:ml-4 cursor-pointer">
-            <Link to='/'>Vincent Therapies</Link>
+            <Link to="/">Vincent Therapies</Link>
           </p>
         </div>
 
