@@ -34,7 +34,7 @@ const ImageSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-[70%] overflow-hidden h-[350px] mx-auto  ">
+    <div className="relative  max-[400px]:w-[90%] md:w-[50%] w-[50%] lg:w-[70%] overflow-hidden h-[350px] mx-auto  ">
       {/* Slide Wrapper */}
       <div
         ref={slideRef}
@@ -50,11 +50,11 @@ const ImageSlider = () => {
             <img
               src={slide.img}
               alt={`Slide ${index}`}
-              className="h-16 w-16 object-cover rounded-full mb-5 shadow-md"
+              className=" size-8 md:h-16 md:w-16 object-cover rounded-full mb-5 shadow-md"
             />
 
             {/* Text */}
-            <p className="text-lg leading-relaxed text-gray-800 font-medium max-w-2xl">
+            <p className=" text-xs md:text-lg leading-relaxed text-gray-800 font-medium max-w-2xl">
               {slide.text}
             </p>
           </div>

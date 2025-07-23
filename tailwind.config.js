@@ -5,6 +5,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      
       keyframes: {
         shake: {
           '0%, 100%': { transform: 'translateX(0)' },
