@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import profile from '../assets/profile-user.png';
+import profile from '../../assets/profile-user.png';
 
 const slides = [
   {

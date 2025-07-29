@@ -1,8 +1,8 @@
-import React from "react";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { FaLinkedin } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
+import { MdLocalPhone } from "react-icons/md";
 
 const Footer = () => {
   return (
@@ -56,6 +56,11 @@ const Footer = () => {
             >
               roshan.vincent@behavioraltherapist.co.uk
             </a>
+          </div>
+
+          <div className="flex items-start gap-3 my-3">
+            <MdLocalPhone className="text-2xl sm:text-3xl text-white mt-1" />
+            +44 7808 213247
           </div>
         </div>
       </div>

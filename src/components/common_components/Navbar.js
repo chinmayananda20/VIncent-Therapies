@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,23 +41,25 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex list-none font-bold text-lg">
-          <li className="m-4 cursor-pointer hover:underline">Services</li>
+          <li className="m-4 cursor-pointer hover:underline"> <Link to='/services'>Services </Link></li>
 
           <li className="m-4 cursor-pointer hover:underline">
             <Link to="/about">About Me</Link>
           </li>
-          <li className="m-4 cursor-pointer hover:underline">Contact Us</li>
+          <li className="m-4 cursor-pointer hover:underline">
+            <Link to="/contact">Contact Us </Link>{" "}
+          </li>
         </ul>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
         <ul className="md:hidden flex flex-col items-center font-bold text-lg py-2 space-y-2">
-          <li className="cursor-pointer hover:underline">Services</li>
+          <li className="cursor-pointer hover:underline"> <Link to='/services'>Services </Link></li>
           <li className="cursor-pointer hover:underline">
             <Link to="/about">About Me</Link>
           </li>
-          <li className="cursor-pointer hover:underline">Contact Us</li>
+          <li className="cursor-pointer hover:underline"><Link to="/contact">Contact Us </Link></li>
         </ul>
       )}
     </div>

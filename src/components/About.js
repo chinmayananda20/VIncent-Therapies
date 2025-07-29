@@ -3,20 +3,87 @@ import { FaLinkedin } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import accreditation from "../assets/accreditstiin.png";
 import acc_logo from "../assets/acc logo.png";
-import ImageSlider from "../components/ImageSlider";
+import ImageSlider from "./About_components/ImageSlider";
 import { useState } from "react";
 import { MdError } from "react-icons/md";
 import roshan2 from "../assets/roshan2.png";
 import roshan3 from "../assets/roshan3.jpeg";
 import testn from "../assets/testn .png";
+import "animate.css";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 const About = () => {
   const [aboutError, setAboutError] = useState(false);
   const [aboutShake, setAboutShake] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const summaryTextVariants = {
+    hidden: { opacity: 0, x: -60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1 },
+    },
+  };
+
+  const summaryImageVariants = {
+    hidden: { opacity: 0, x: 60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1 },
+    },
+  };
+  const [summaryRef, summaryInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+  const babcpLeftVariants = {
+    hidden: { opacity: 0, x: -60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1 },
+    },
+  };
+
+  const babcpRightVariants = {
+    hidden: { opacity: 0, x: 60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1 },
+    },
+  };
+  const [babcpRef, babcpInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+const testimonialsLeftVariants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 1 }
+  }
+};
+
+const testimonialsRightVariants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 1 }
+  }
+};
+const [testimonialsRef, testimonialsInView] = useInView({
+  triggerOnce: true,
+  threshold: 0.2
+});
 
   return (
     <div>
       <div className="w-full min-h-[640px] flex flex-col lg:flex-row items-center justify-between bg-[#FDFAF3] relative pb-4">
-        {/* Background Shape with Image */}
         <div className="absolute bg-[rgb(217,241,251)] w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] rounded-full top-[40px] left-[50%] lg:left-[3%] transform -translate-x-1/2 lg:translate-x-0 z-0 flex justify-center items-center">
           <img
             src={roshan2}
@@ -25,7 +92,6 @@ const About = () => {
           />
         </div>
 
-        {/* Foreground Box with Text */}
         <div className="z-10 w-[90%] sm:w-[85%] lg:w-[55%] mt-[320px] lg:mt-0 lg:ml-[30%] bg-white shadow-2xl rounded-lg p-6 sm:p-10">
           <p className="text-center text-xl sm:text-2xl lg:text-3xl font-bold font-quicksand tracking-wide animate__animated animate__zoomIn">
             Therapist Rohan Vincent
@@ -66,7 +132,6 @@ const About = () => {
         </div>
 
         <div className="w-full lg:w-[25%] mt-10 lg:mt-0 flex flex-row lg:flex-col items-center justify-center lg:items-start gap-4 lg:gap-6 lg:pl-10 z-10">
-          {/* LinkedIn */}
           <div className="group relative flex justify-center items-center text-zinc-600 text-sm font-bold">
             <div className="shadow-md bg-[#4CECD6] rounded-xl cursor-pointer transition-all duration-300 animate__animated animate__zoomIn flex items-center justify-center  lg:px-6 h-[56px] lg:h-[80px] min-w-[56px] lg:min-w-[80px]">
               <FaLinkedin className="text-2xl lg:text-4xl text-white transition-all duration-300" />
@@ -83,7 +148,6 @@ const About = () => {
             </div>
           </div>
 
-          {/* Mail */}
           <div className="group relative flex justify-center items-center text-zinc-600 text-sm font-bold">
             <div className="shadow-md bg-[#4CECD6] rounded-xl cursor-pointer transition-all duration-300 animate__animated animate__zoomIn flex items-center justify-center px-4 lg:px-6 h-[56px] lg:h-[80px] min-w-[56px] lg:min-w-[80px]">
               <IoIosMail className="text-2xl lg:text-4xl text-white transition-all duration-300" />
@@ -101,132 +165,233 @@ const About = () => {
       </div>
 
       <h2 className="text-center mt-16 mb-10 text-4xl sm:text-5xl font-cursive px-4">
-  Hello There, Glad To Meet You
-</h2>
-
-<div className="w-full flex flex-col lg:flex-row items-center lg:items-center px-6 lg:px-16">
-  {/* Text Section */}
-  <div className="w-full lg:w-3/5 min-h-[500px] my-6 lg:my-24 flex flex-col justify-center">
-    <div className="p-6">
-      <p className="text-center my-6 text-2xl sm:text-3xl font-bold font-quicksand">
-        My Summary
-      </p>
-      <p className="mx-2 sm:mx-6 lg:mx-8 my-5 text-base sm:text-lg lg:text-xl text-justify leading-relaxed font-quicksand">
-        I am a fully accredited Cognitive Behavioural Therapist (BABCP
-        registered) and EMDR-trained practitioner with a strong academic
-        background and diverse clinical experience across NHS and third-sector
-        services. I specialize in delivering evidence-based CBT interventions
-        for a wide range of mental health challenges, with a particular focus on
-        high-intensity therapy in both individual and group formats. My work
-        spans across various populations, including frontline workers during the
-        COVID-19 pandemic, and I've contributed to the development of innovative
-        service models, psychoeducational materials, and group therapies.
-        Proficient in multiple languages, I also bring a multicultural
-        perspective to my practice. My leadership in both clinical and
-        extracurricular settings reflects strong communication, supervision, and
-        team-building skills.
-      </p>
-    </div>
-  </div>
-
-  {/* Image Section */}
-  <div className="w-full lg:w-2/5 flex justify-center lg:justify-end my-6 lg:my-24">
-    <img
-      src={roshan3}
-      alt="Roshan"
-      className="h-[500px] object-cover rounded-lg shadow-md"
-    />
-  </div>
-</div>
+        Hello There, Glad To Meet You
+      </h2>
 
       <div
+        ref={summaryRef}
+        className="w-full flex flex-col lg:flex-row items-center lg:items-center px-6 lg:px-16"
+      >
+        
+        <motion.div
+          className="w-full lg:w-3/5 min-h-[500px] my-6 lg:my-24 flex flex-col justify-center"
+          variants={summaryTextVariants}
+          initial="hidden"
+          animate={summaryInView ? "visible" : "hidden"}
+        >
+          <div className="p-6">
+            <p className="text-center my-6 text-2xl sm:text-3xl font-bold font-quicksand">
+              My Summary
+            </p>
+            <p className="mx-2 sm:mx-6 lg:mx-8 my-5 text-base sm:text-lg lg:text-xl text-justify leading-relaxed font-quicksand">
+              I am a fully accredited Cognitive Behavioural Therapist (BABCP
+              registered) and EMDR-trained practitioner with a strong academic
+              background and diverse clinical experience across NHS and
+              third-sector services. I specialize in delivering evidence-based
+              CBT interventions for a wide range of mental health challenges,
+              with a particular focus on high-intensity therapy in both
+              individual and group formats. My work spans across various
+              populations, including frontline workers during the COVID-19
+              pandemic, and I've contributed to the development of innovative
+              service models, psychoeducational materials, and group therapies.
+              Proficient in multiple languages, I also bring a multicultural
+              perspective to my practice. My leadership in both clinical and
+              extracurricular settings reflects strong communication,
+              supervision, and team-building skills.
+            </p>
+          </div>
+        </motion.div>
+
+        
+        <motion.div
+          className="w-full lg:w-2/5 flex justify-center lg:justify-end my-6 lg:my-24"
+          variants={summaryImageVariants}
+          initial="hidden"
+          animate={summaryInView ? "visible" : "hidden"}
+        >
+          <img
+            src={roshan3}
+            alt="Roshan"
+            className="h-[500px] object-cover rounded-lg shadow-md"
+          />
+        </motion.div>
+      </div>
+
+      <motion.div
+  ref={babcpRef}
   className="w-full flex flex-col lg:flex-row items-center justify-center px-4 lg:px-16 py-10"
   style={{ backgroundColor: "rgb(253, 250, 243)" }}
 >
-  {/* Image Section */}
-  <div className="w-full lg:w-1/2 flex justify-center mb-8 lg:mb-0">
+  {/* Left: Accreditation Image */}
+  <motion.div
+    className="w-full lg:w-1/2 flex justify-center mb-8 lg:mb-0"
+    variants={babcpLeftVariants}
+    initial="hidden"
+    animate={babcpInView ? "visible" : "hidden"}
+  >
     <img
       src={accreditation}
       alt="Accreditation"
       className="h-[300px] sm:h-[400px] lg:h-[500px] object-contain shadow-xl"
     />
-  </div>
+  </motion.div>
 
-  {/* Text Section */}
-  <div className="w-full lg:w-1/2 px-4">
+  {/* Right: Text & Logo */}
+  <motion.div
+    className="w-full lg:w-1/2 px-4"
+    variants={babcpRightVariants}
+    initial="hidden"
+    animate={babcpInView ? "visible" : "hidden"}
+  >
     <p className="text-center lg:text-left mb-6 text-2xl sm:text-3xl font-bold font-quicksand">
       BABCP Accreditation
     </p>
     <ul className="list-disc list-inside text-base sm:text-lg leading-relaxed font-quicksand">
       <li>
-        <strong>Fully accredited CBT Therapist</strong> with the British Association for Behavioural and Cognitive Psychotherapies (<strong>BABCP</strong>).
+        <strong>Fully accredited CBT Therapist</strong> with the British
+        Association for Behavioural and Cognitive Psychotherapies (
+        <strong>BABCP</strong>).
       </li>
       <li>
-        <strong>Registration No: 00001001195</strong> – meeting national standards for evidence-based psychological therapies.
+        <strong>Registration No: 00001001195</strong> – meeting national
+        standards for evidence-based psychological therapies.
       </li>
       <li>
-        Trained in both <strong>CBT</strong> and <strong>EMDR</strong>, backed by postgraduate education and clinical supervision.
+        Trained in both <strong>CBT</strong> and <strong>EMDR</strong>, backed
+        by postgraduate education and clinical supervision.
       </li>
       <li>
-        Accreditation confirms alignment with <strong>NICE guidelines</strong> and the <strong>Roth & Pilling competency framework</strong>.
+        Accreditation confirms alignment with{" "}
+        <strong>NICE guidelines</strong> and the{" "}
+        <strong>Roth & Pilling competency framework</strong>.
       </li>
       <li>
-        <strong>Commitment to continuous learning</strong>, ethical integrity, and reflective practice.
+        <strong>Commitment to continuous learning</strong>, ethical integrity,
+        and reflective practice.
       </li>
       <li>
-        Offers therapy with <strong>trust, transparency, and clinical effectiveness</strong>—across individual, group, and supervisory formats.
+        Offers therapy with{" "}
+        <strong>trust, transparency, and clinical effectiveness</strong> —across
+        individual, group, and supervisory formats.
       </li>
       <li>
-        Undergoes ongoing <strong>professional development and supervision</strong> to maintain high standards of care.
+        Undergoes ongoing{" "}
+        <strong>professional development and supervision</strong> to maintain
+        high standards of care.
       </li>
     </ul>
 
     {/* Accreditation Logo */}
     <div className="w-full mt-10 flex justify-center lg:justify-end">
-      <img src={acc_logo} alt="BABCP Logo" className="h-[100px] sm:h-[130px] lg:h-[150px] shadow-xl" />
+      <img
+        src={acc_logo}
+        alt="BABCP Logo"
+        className="h-[100px] sm:h-[130px] lg:h-[150px] shadow-xl"
+      />
     </div>
-  </div>
-</div>
+  </motion.div>
+</motion.div>
 
 
-      <div className="px-6 py-16 lg:px-24 lg:py-24 bg-white">
+     <motion.div
+  ref={testimonialsRef}
+  className="px-6 py-16 lg:px-24 lg:py-24 bg-white"
+>
   <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-    {/* Left Section - Text */}
-    <div className="w-full lg:w-1/2">
+    {/* Left Column */}
+    <motion.div
+      className="w-full lg:w-1/2"
+      variants={testimonialsLeftVariants}
+      initial="hidden"
+      animate={testimonialsInView ? "visible" : "hidden"}
+    >
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-cursive mb-6 text-center lg:text-left">
         Experience Shared By Our Clients
       </h2>
       <p className="text-base sm:text-lg lg:text-xl text-center lg:text-left leading-relaxed max-w-2xl mx-auto lg:mx-0">
-        I’ve been fortunate to collaborate with some incredible individuals who’ve shared kind words about our time together. I hope their testimonials encourage you to reach out and begin your own confidence journey with me.
+        I’ve been fortunate to collaborate with some incredible individuals
+        who’ve shared kind words about our time together. I hope their
+        testimonials encourage you to reach out and begin your own confidence
+        journey with me.
       </p>
       <div className="flex justify-center lg:justify-start">
-        <button className="mt-6 cursor-pointer transition-all bg-[#4CECD6] text-black px-6 py-2 rounded-lg border-[#026659] border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
+        <button className="mt-6 cursor-pointer transition-all bg-[#4CECD6] text-black px-6 py-2 rounded-lg  hover:brightness-110 hover:-translate-y-[1px]  active:brightness-90 active:translate-y-[2px]">
           Read More Testimonials
         </button>
+        <button
+          onClick={() => setShowFeedback(true)}
+          className="mt-6 mx-5 cursor-pointer text-black px-6 py-2 rounded-lg border border-black hover:-translate-y-[1px]"
+        >
+          Send your feedback
+        </button>
       </div>
-    </div>
+    </motion.div>
 
-    {/* Right Section - Image + Slider */}
-<div className="w-full lg:w-1/2 relative rounded-3xl bg-[#4CECD6] shadow-xl overflow-hidden h-[350px] sm:h-[550px] lg:h-[600px] lg:w-[700px] flex items-center justify-center">
-  {/* Background Image - Centered */}
-  <div className="absolute inset-0 flex justify-center items-center z-0">
-    <img
-      src={testn}
-      alt="Slider Background"
-      className="max-w-none w-auto h-full object-center"
-    />
+    {/* Right Column: Slider with image */}
+    <motion.div
+      className="w-full lg:w-1/2 relative rounded-3xl bg-[#4CECD6] shadow-xl overflow-hidden h-[350px] sm:h-[550px] lg:h-[600px] lg:w-[700px] flex items-center justify-center"
+      variants={testimonialsRightVariants}
+      initial="hidden"
+      animate={testimonialsInView ? "visible" : "hidden"}
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0 flex justify-center items-center z-0">
+        <img
+          src={testn}
+          alt="Slider Background"
+          className="max-w-none w-auto h-full object-center"
+        />
+      </div>
+
+      {/* Slider */}
+      <div className="relative z-10 w-full flex justify-center items-center px-4">
+        <ImageSlider />
+      </div>
+    </motion.div>
   </div>
+</motion.div>
 
-  {/* Slider Overlay Centered */}
-  <div className="relative z-10 w-full flex justify-center items-center px-4">
-    <ImageSlider />
-  </div>
-</div>
+      {showFeedback && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="relative bg-white rounded-2xl shadow-2xl p-8 w-[90%] max-w-xl animate__animated animate__fadeIn">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowFeedback(false)}
+              className="absolute top-4 right-4 text-gray-600 hover:text-red-600 text-2xl font-bold"
+            >
+              &times;
+            </button>
 
-  </div>
-</div>
-
-
+            {/* Feedback Form */}
+            <h2 className="text-2xl font-bold mb-6 text-center text-[#026659]">
+              We Value Your Feedback
+            </h2>
+            <form className="flex flex-col gap-4">
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4CECD6]"
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4CECD6]"
+              />
+              <textarea
+                rows="5"
+                placeholder="Your Feedback"
+                className="p-3 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-[#4CECD6]"
+              />
+              <button
+                type="submit"
+                className="mt-2 bg-[#4CECD6] text-black font-semibold py-3 rounded-md hover:brightness-110 transition-all"
+              >
+                Submit Feedback
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
