@@ -1,15 +1,19 @@
 import React from "react";
 import { IoIosMail } from "react-icons/io";
 import { MdLocalPhone } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
 import img from "../assets/img.jpg";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
+import { useState } from "react";
 import ContactDetails from "./Contact_components/ContactDetails";
+import { ToastContainer, toast } from "react-toastify";
 import TestimonialBanner from "./Contact_components/TestimonialBanner";
 const Contact = () => {
   const contactFormRef = React.useRef(null);
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [message, setmessage] = useState("");
+  const [phone, setphone] = useState("");
   const slideLeft = {
     hidden: { opacity: 0, x: -60 },
     visible: {
@@ -81,6 +85,95 @@ const Contact = () => {
     },
   ];
 
+  const handlesubmit = async (e) =>{
+     e.preventDefault();
+      if (name === "") {
+      toast.error("Please Enter Your Name", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else if (email === "") {
+      toast.error("Please Enter Your Mail Id", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else if (message === "") {
+      toast.error("Please Enter Your  Message", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else if (phone === "") {
+      toast.error("Please Enter Your Phone Number", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else{
+      let response = await fetch("http://localhost:8000/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message, phone }),  
+      });
+      const res = await response.json();
+      if (res.message === "Message sent successfully") {
+        toast.success(res.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        setname("");
+        setemail("");
+        setphone("");
+        setmessage("");
+      } else {
+        toast.error(res.error, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        setname("");
+        setemail("");
+        setphone("");
+        setmessage("");
+      }
+    }
+  }
+
   const FAQItem = ({ question, answer }) => {
     const [isOpen, setIsOpen] = React.useState(false);
 
@@ -111,6 +204,8 @@ const Contact = () => {
 
   return (
     <div>
+      <ToastContainer />
+
       <div
         className="relative h-[500px] flex justify-center items-center flex-col text-white"
         style={{
@@ -150,7 +245,6 @@ const Contact = () => {
         ref={contactRef}
         className="w-full flex flex-col lg:flex-row justify-between items-start px-6 py-16 gap-10"
       >
-        
         <motion.div
           ref={contactFormRef}
           className="w-full lg:w-[45%] md:m-16"
@@ -173,14 +267,9 @@ const Contact = () => {
               <MdLocalPhone className="text-2xl mr-2 text-[#026659]" />
               <span className="text-gray-800 underline">+44 7808 213247</span>
             </div>
-            <div className="flex items-center">
-              <FaLocationDot className="text-2xl mr-2 text-[#026659]" />
-              <span className="text-gray-800 underline">XXXX Location</span>
-            </div>
           </div>
         </motion.div>
 
-        
         <motion.div
           className="w-full lg:w-[50%] bg-white shadow-lg p-6 rounded-lg"
           variants={contactSlideRight}
@@ -188,13 +277,15 @@ const Contact = () => {
           animate={contactInView ? "visible" : "hidden"}
         >
           <h2 className="text-xl font-semibold mb-4 text-[#026659]">Contact</h2>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handlesubmit}>
             <div>
               <label className="block text-sm text-gray-600 mb-1">
                 Full Name
               </label>
               <input
                 type="text"
+                value={name}
+                onChange={(e) => setname(e.target.value)}
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#4CECD6]"
               />
             </div>
@@ -202,6 +293,8 @@ const Contact = () => {
               <label className="block text-sm text-gray-600 mb-1">Email</label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#4CECD6]"
               />
             </div>
@@ -211,6 +304,8 @@ const Contact = () => {
               </label>
               <input
                 type="tel"
+                value={phone}
+                onChange={(e) => setphone(e.target.value)}
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#4CECD6]"
               />
             </div>
@@ -218,7 +313,11 @@ const Contact = () => {
               <label className="block text-sm text-gray-600 mb-1">
                 Message
               </label>
-              <textarea className="w-full h-28 px-4 py-2 border rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-[#4CECD6]" />
+              <textarea
+                value={message}
+                onChange={(e) => setmessage(e.target.value)}
+                className="w-full h-28 px-4 py-2 border rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-[#4CECD6]"
+              />
             </div>
             <button
               type="submit"
@@ -230,28 +329,10 @@ const Contact = () => {
         </motion.div>
       </div>
 
-      <div className="flex flex-col items-center mt-16">
-        <p className="font-bold text-5xl m-7">Location</p>
-        <div className="w-full flex justify-center">
-          <iframe
-            title="Google Map Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4756.8697357895735!2d-2.9603121084927975!3d53.40704849878343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b210572066271%3A0x3fcc31da7c6bf899!2s8%20Edge%20Ln%2C%20Edge%20Hill%2C%20Liverpool%20L7%201QX!5e0!3m2!1sen!2suk!4v1753374189739!5m2!1sen!2suk"
-            width="80%"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="rounded-xl shadow-md"
-          ></iframe>
-        </div>
-      </div>
-
       <div
         ref={faqRef}
         className="w-full flex flex-col md:flex-row md:justify-around items-center my-16"
       >
-        
         <motion.div
           className="w-full md:w-[50%] text-center md:text-left"
           variants={slideLeft}
@@ -271,7 +352,6 @@ const Contact = () => {
           </button>
         </motion.div>
 
-        
         <motion.div
           className="w-[70%] md:w-[40%]"
           variants={slideRight}

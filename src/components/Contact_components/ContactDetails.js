@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { IoIosMail } from "react-icons/io";
 import { MdLocalPhone } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
 
 const ContactDetails = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -55,13 +54,7 @@ const rightSlide = {
           </p>
           <p className="underline">+44 7808 213247</p>
         </div>
-        <div className="m-5">
-          <p className="font-bold flex items-center">
-            <FaLocationDot className="text-2xl mr-2" />
-            Office
-          </p>
-          <p className="underline">XXXX Location</p>
-        </div>
+       
       </motion.div>
     </div>
   );
