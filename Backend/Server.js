@@ -11,7 +11,12 @@ const http = require("http");
 const server = http.createServer(app);
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://v-incent-therapies.vercel.app",
+    methods: ["GET", "POST"],
+  })
+);
 
 app.post("/send-feedback", async (req, res) => {
   const { name, mailid, message, rating } = req.body;

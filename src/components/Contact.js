@@ -132,7 +132,7 @@ const Contact = () => {
         theme: "light",
       });
     } else{
-      let response = await fetch("http://localhost:8000/contact", {
+      let response = await fetch("https://vincent-therapies-3.onrender.com/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

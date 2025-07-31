@@ -69,7 +69,7 @@ const About = () => {
         theme: "light",
       });
     } else {
-      let response = await fetch("http://localhost:8000/send-feedback", {
+      let response = await fetch("https://vincent-therapies-3.onrender.com/send-feedback", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
