@@ -76,9 +76,9 @@ const About = () => {
         },
         body: JSON.stringify({ name, mailid, message, rating }),
       });
-       console.log("Raw response:", response);
+       
   const res = await response.json();
-  console.log("Parsed response:", res);
+ 
       
       if (res.message === "Feedback sent successfully") {
         toast.success(res.message, {
