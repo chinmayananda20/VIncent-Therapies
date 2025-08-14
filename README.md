@@ -35,7 +35,7 @@
 
 ## 🛠 Tech Stack
 **Frontend**: React, Tailwind CSS  
-**Backend **: Node.js + Express  
+**Backend**: Node.js + Express  
 **Hosting**: Vercel
 
 ---
