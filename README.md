@@ -1,6 +1,6 @@
 <h1 align="center">🧠 VIncent Therapies</h1>
 <p align="center">
-  <img src="/docs/banner.png" alt="VIncent Therapies Banner" width="100%" />
+  <img src="src/assets/human-profile-with-nature-mental-health-earth-day_1001450-4614.jpg.avif" alt="VIncent Therapies Banner" width="100%" />
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@
 **VIncent Therapies** is a modern, responsive portfolio website for a therapist practice. It presents therapy services, credentials, testimonials, and offers **online session booking**.
 
 <p align="center">
-  <img src="/src/assets/Screenshot 2025-08-14 at 17.59.37.png" alt="Hero Section" width="80%" />
+  <img src="/src/assets/Screenshot 2025-08-14 at 18.10.31.png" alt="Hero Section" width="80%" />
 </p>
 
 ---
@@ -28,7 +28,7 @@
 ✅ Deployed to Vercel for global performance
 
 <p align="center">
-  <img src="/docs/services.png" alt="Services Screenshot" width="80%" />
+  <img src="src/assets/Screenshot 2025-08-14 at 17.59.37.png" alt="Services Screenshot" width="80%" />
 </p>
 
 ---
