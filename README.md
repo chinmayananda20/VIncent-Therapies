@@ -23,7 +23,8 @@
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Getting Started](#-getting-started)
-- [Screenshots](#-screenshots)
+- [Contributing](#contributing)
+- [Contact](#contact)
 
 
 ---
@@ -64,3 +65,20 @@ npm install
 
 # Start the development server
 npm start
+```
+
+## Contributing
+
+Contributions are welcome! Please:
+Fork the repo
+- Create your feature branch: git checkout -b feature/awesome
+- Commit your changes: git commit -m 'Add cool feature'
+- Push to your branch: git push origin feature/awesome
+- Open a Pull Request here on GitHub
+
+## Contact
+Chinmayananda Mandula – mandulachinmayananda@gmail.com
+
+
+
+
