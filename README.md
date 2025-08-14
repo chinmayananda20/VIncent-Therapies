@@ -15,6 +15,8 @@
 
 <p align="center">
   <img src="/src/assets/Screenshot 2025-08-14 at 18.10.31.png" alt="Hero Section" width="80%" />
+  
+  <img src="/src/assets/Screenshot 2025-08-14 at 18.18.44.png" alt="Hero Section" width="80%" />
 </p>
 
 ---
