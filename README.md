@@ -1,4 +1,4 @@
-<h1 align="center">🧠 VIncent Therapies</h1>
+<h1 align="center">🧠 Vincent Therapies</h1>
 <p align="center">
   <img src="src/assets/human-profile-with-nature-mental-health-earth-day_1001450-4614.jpg.avif" alt="VIncent Therapies Banner" width="100%" />
 </p>
