@@ -14,7 +14,7 @@
 **VIncent Therapies** is a modern, responsive portfolio website for a therapist practice. It presents therapy services, credentials, testimonials, and offers **online session booking**.
 
 <p align="center">
-  <img src="/docs/hero.png" alt="Hero Section" width="80%" />
+  <img src="/src/assets/Screenshot 2025-08-14 at 17.59.37.png" alt="Hero Section" width="80%" />
 </p>
 
 ---
