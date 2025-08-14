@@ -32,6 +32,7 @@
 **Vincent Therapies** is a modern, responsive portfolio website for a therapist practice.  
 It presents therapy services, credentials, testimonials, and offers **online session booking**.
 
+<p align="center"> <img src="/src/assets/Screenshot 2025-08-14 at 18.10.31.png" alt="Hero Section" width="80%" /> <img src="/src/assets/Screenshot 2025-08-14 at 18.18.44.png" alt="Hero Section" width="80%" /> </p>
 ---
 
 ## ✨ Features
@@ -42,6 +43,7 @@ It presents therapy services, credentials, testimonials, and offers **online ses
 ✅ Responsive design & accessibility  
 ✅ Deployed to Vercel for global performance
 
+<p align="center"> <img src="src/assets/Screenshot 2025-08-14 at 18.13.36.png" alt="Services Screenshot" width="80%" /> </p>
 ---
 
 ## 🛠 Tech Stack
