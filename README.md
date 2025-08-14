@@ -29,7 +29,7 @@
 ---
 
 ## 📖 Overview
-**VIncent Therapies** is a modern, responsive portfolio website for a therapist practice.  
+**Vincent Therapies** is a modern, responsive portfolio website for a therapist practice.  
 It presents therapy services, credentials, testimonials, and offers **online session booking**.
 
 ---
